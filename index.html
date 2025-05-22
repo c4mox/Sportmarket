@@ -1,0 +1,226 @@
+<!-- /*Camilo Artola 306498*/ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>obligatorioP1</title>
+</head>
+
+<body>
+    <div id="contenedor">
+        <header>
+            <img id="logo" src="https://p1.develotion.com/cart.jpg" alt="logo" />
+            <nav>
+                <ul id="navPrincipalAdmin" class="seccion">
+                    <li>
+                        <a id="menuAdminListadoCompras">Listado y aprobación de compras</a>
+                    </li>
+                    <li>
+                        <a id="menuAdminCrearProducto">Crear productos</a>
+                    </li>
+                    <li>
+                        <a id="menuAdminAdministrarProd">Administrar productos</a>
+                    </li>
+                    <li>
+                        <a id="menuAdminVerInforme">Ver informe de ganancias</a>
+                    </li>
+                    <li>
+                        <a id="menuCerrarSesiónAdmin">Cerrar Sesión</a>
+                    </li>
+                </ul>
+
+                <ul id="navPrincipalComp" class="seccion">
+                    <li>
+                        <a id="menuCompraProductos">Compra de productos</a>
+                    </li>
+                    <li>
+                        <a id="menuListadoCompras">Listado de compras</a>
+                    </li>
+                    <li>
+                        <a id="menuProductosEnOferta">Productos en oferta</a>
+                    </li>
+                    <li>
+                        <a id="menuCerrarSesión">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="seccionLogin" class="seccion">
+
+                <h1>Login</h1>
+                <form id="FormLogin">
+                    <label for="txtNomUsuarioAdmin">Nombre de Usuario</label>
+                    <input type="text" id="txtNomUsuarioAdmin" placeholder="Ingrese nombre de usuario..." required />
+                    <label for="txtContraseñaAdmin">Contraseña</label>
+                    <input type="text" id="txtContraseñaAdmin" placeholder="Ingrese contraseña..." required />
+                    <input type="button" value="Ingresar" id="btnIngresar" />
+                    <input type="button" value="¿No tienes usuario? Registrate ya." id="btnRegistrarseYa" />
+                </form>
+            </section>
+
+            <section id="seccionRegistro" class="seccion">
+                <h1>Registro</h1>
+                <form id="FormRegistro">
+                    <label for="txtNombreComp">Nombre</label>
+                    <input type="text" id="txtNombreComp" placeholder="Ingrese nombre..." required />
+                    <label for="txtApellidoComp">Apellido</label>
+                    <input type="text" id="txtApellidoComp" placeholder="Ingrese apellido..." required />
+                    <label for="txtNomUsuarioComp">Nombre de Usuario</label>
+                    <input type="text" id="txtNomUsuarioComp" placeholder="Ingrese nombre de usuario..." required />
+                    <label for="txtContraseñaComp">Contraseña</label>
+                    <input type="text" id="txtContraseñaComp" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}"
+                        title="La contraseña debe tener al menos 5 caracteres, incluyendo al menos una mayúscula, una minúscula y un número"
+                        placeholder="Ingrese contraseña..." required />
+                    <label for="txtNroTarjeta">Número de tarjeta de crédito</label>
+                    <input type="text" id="txtNroTarjeta" pattern="\d{4}-\d{4}-\d{4}-\d{4}" title="WWWW-XXXX-YYYY-ZZZZ"
+                        placeholder="Ingrese numero de tarjeta..." required />
+                    <label for="txtCodigoSeg">CVC (Codigo de verificación)</label>
+                    <input type="text" id="txtCodigoSeg" pattern="\d{3}" title="Numero de tres digitos"
+                        placeholder="Ingrese codigo de verificación..." required />
+                    <input type="button" value="Registrarse" id="btnRegistro" />
+                </form>
+            </section>
+            <section id="seccionCompraProductos" class="seccion">
+                <h1>Compra de Productos</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Precio por unid. ($U)</th>
+                            <th></th>
+                            <th>Imagen</th>
+                            <th>Saldo: $<span id="saldo1"></span></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblProductos">
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="seccionListadoCompras" class="seccion">
+                <h1>Listado de Compras</h1>
+                <label for="slcFiltrar">Filtrar compras</label>
+                <select id="slcFiltrar">
+                    <option value="todas">Todas</option>
+                    <option value="pendiente">Pendientes</option>
+                    <option value="aprobada">Aprobadas</option>
+                    <option value="cancelada">Canceladas</option>
+                </select>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Cantidad de Unid.</th>
+                            <th>Monto Total</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblListadoCompras">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p id="pResultado"></p>
+            </section>
+
+            <section id="seccionProductosEnOferta" class="seccion">
+                <h1>Productos en Oferta!</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Precio por unid. ($U)</th>
+                            <th></th>
+                            <th>Imagen</th>
+                            <th>Saldo: $<span id="saldo2"></span></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblProdEnOferta">
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="seccionCrearProducto" class="seccion">
+                <h1>Crear Producto</h1>
+                <form id="formProducto">
+                    <label for="txtNombreProd">Nombre</label>
+                    <input type="text" id="txtNombreProd" placeholder="Ingrese nombre..." required />
+                    <label for="txtPrecio">Precio</label>
+                    <input type="number" min="1" id="txtPrecio" placeholder="Ingrese precio..." required />
+                    <label for="txtDescProd">Descripción</label>
+                    <textarea name="descripcion" rows="3" cols="40" id="txtDescProd"
+                        placeholder="Ingrese una descripcion del producto..." required></textarea>
+                    <label for="ImagenProd">Imagen</label>
+                    <input type="file" id="ImagenFile" required>
+                    <label for="txtStock">Stock</label>
+                    <input type="number" min="1" max="10" id="txtStock" placeholder="Max 10" required />
+                    <input type="button" value="Crear Producto" id="btnCrearProd">
+                </form>
+            </section>
+
+            <section id="seccionAdministrarProd" class="seccion">
+                <h1>Administrar Productos</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Precio por unid. ($U)</th>
+                            <th></th>
+                            <th>Imagen</th>
+                            <th>Stock actual</th>
+                            <th>Nuevo stock</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblAdministrarProd">
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="seccionListadoyAprobacionAdmin" class="seccion">
+                <h1>Listado y aprobación de compras</h1>
+                <label for="slcFiltrarAdmin">Compras</label>
+                <select id="slcFiltrarAdmin">
+                    <option value="pendiente">Pendientes</option>
+                    <option value="aprobada">Aprobadas</option>
+                    <option value="cancelada">Canceladas</option>
+                </select>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Cantidad de Unid.</th>
+                            <th>Monto Total</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblListadoComprasAdmin">
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="seccionVerInforme" class="seccion">
+                <h1>Ver informe de ganancias</h1>
+                <p id="pParrafo"></p>
+            </section>
+        </main>
+    </div>
+    <script src="js/obligatorio.js"></script>
+</body>
+
+</html>
