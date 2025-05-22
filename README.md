@@ -1,0 +1,1 @@
+Este proyecto, realizado con JS, HTML y CSS fue un entregable para la universidad y aqui lo comparto por si quieren verlo. Es una aplicación web para un comercio que se dedica a la venta de artículos deportivos y poder vender productos de forma online a los usuarios (e-commerce).
